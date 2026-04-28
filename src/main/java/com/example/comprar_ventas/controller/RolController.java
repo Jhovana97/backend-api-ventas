@@ -31,7 +31,7 @@ public class RolController {
     public String actualizarRol(@PathVariable Integer rolId, @RequestBody  RolRequest rolRequest) {
         return "Rol actualizado";
     }
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{i d}")
     public String borrarRol(@PathVariable Integer id) {
         return "Rol eliminado";
     }
