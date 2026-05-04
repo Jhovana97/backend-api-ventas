@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class Permiso {
@@ -23,5 +24,6 @@ public class Permiso {
     @Column(nullable = false, length = 100)
     private String accion;
 
+    @ManyToMany(mappedBy = "permisos")
     private List<Rol> roles;
 }
