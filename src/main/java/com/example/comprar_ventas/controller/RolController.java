@@ -1,5 +1,6 @@
 package com.example.comprar_ventas.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,11 +11,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.comprar_ventas.dto.RolRequest;
+import com.example.comprar_ventas.service.spec.IRolService;
 
 @RestController
 @RequestMapping("/rol")
 
 public class RolController {
+
+    @Autowired
+    private IRolService rolService;
+
     @GetMapping
     public String listarRoles() {
         return "Listado de roles";
