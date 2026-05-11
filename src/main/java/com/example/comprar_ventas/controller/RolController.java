@@ -1,5 +1,7 @@
 package com.example.comprar_ventas.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.comprar_ventas.dto.RolRequest;
+import com.example.comprar_ventas.entity.Rol;
 import com.example.comprar_ventas.service.spec.IRolService;
 
 @RestController
@@ -22,23 +25,25 @@ public class RolController {
     private IRolService rolService;
 
     @GetMapping
-    public String listarRoles() {
-        return "Listado de roles";
+    public List<Rol> listarRoles() {
+        return rolService.findAllRoles();
     }
     @GetMapping("/{rolId}")// /rol/1 para obtener el rol con id 1
-    public String obtenerRolPorId(@PathVariable Integer rolId) {
-        return "Rol con id: " + rolId;
+    public Rol obtenerRolPorId(@PathVariable Integer rolId) {
+        return rolService.findRolById (rolId);
     }
     @PostMapping
-    public String crearRol(@RequestBody  RolRequest rolRequest) {
-        return "Rol creado";
+    public Rol crearRol(@RequestBody  RolRequest rolRequest) {
+        return rolService.createRol(rolRequest);
     }
     @PutMapping("/{rolId}")
-    public String actualizarRol(@PathVariable Integer rolId, @RequestBody  RolRequest rolRequest) {
-        return "Rol actualizado";
+    public Rol actualizarRol(@PathVariable Integer rolId, @RequestBody  RolRequest rolRequest) {
+        return rolService.updateRol(rolId, rolRequest);
     }
-    @DeleteMapping("/{i d}")
-    public String borrarRol(@PathVariable Integer id) {
-        return "Rol eliminado";
+    @DeleteMapping("/{id}") 
+    public void borrarRol(@PathVariable Integer id) {
+        rolService.deleteById(id);
     }
 }
+
+

@@ -32,4 +32,50 @@ public class Rol {
         inverseJoinColumns = @JoinColumn(name = "permiso_id")
     )
     private List<Permiso> permisos;
+
+    
+
+    public Rol() {
+    }
+
+
+    public Rol(Integer id, String nombreCompleto, String descripcion, List<Permiso> permisos) {
+        this.id = id;
+        this.nombreCompleto = nombreCompleto;
+        this.descripcion = descripcion;
+        this.permisos = permisos;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getNombreCompleto() {
+        return nombreCompleto;
+    }
+
+    public void setNombreCompleto(String nombreCompleto) {
+        this.nombreCompleto = nombreCompleto;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public List<Permiso> getPermisos() {
+        return permisos;
+    }
+
+    public void setPermisos(List<Permiso> permisos) {
+        this.permisos = permisos;
+    }
+    
 }

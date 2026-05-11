@@ -2,7 +2,7 @@ package com.example.comprar_ventas.service.spec;
 
 import java.util.List;
 
-
+import com.example.comprar_ventas.dto.RolRequest;
 import com.example.comprar_ventas.entity.Rol;
 
 public interface IRolService {
@@ -13,8 +13,9 @@ public interface IRolService {
 
     Rol findRolByNombre(String nombre);
 
-    Rol createRol(Rol rol);
-    Rol upddateRol(Integer id, Rol rol);
+    Rol createRol(RolRequest rol);
+
+    Rol updateRol(Integer id, RolRequest rol);
 
     void deleteById(Integer id);
 }

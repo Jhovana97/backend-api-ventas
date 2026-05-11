@@ -2,49 +2,51 @@ package com.example.comprar_ventas.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.comprar_ventas.dto.RolRequest;
 import com.example.comprar_ventas.entity.Rol;
+import com.example.comprar_ventas.repository.RolRepository;
 import com.example.comprar_ventas.service.spec.IRolService;
 
 @Service
 public class RolService implements IRolService {
 
+    @Autowired
+    private RolRepository rolRepository;
+
     @Override
     public List<Rol> findAllRoles() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findAllRoles'");
+        return rolRepository.findAll();
     }
 
     @Override
     public Rol findRolById(Integer id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findRolById'");
+        return rolRepository.findById(id).get();
     }
 
     @Override
     public Rol findRolByNombre(String nombre) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findRolByNombre'");
+        return rolRepository.findByNombre(nombre).get();
     }
 
     @Override
-    public Rol createRol(Rol rol) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'createRol'");
+    public Rol createRol(RolRequest rol) {
+        Rol rolToCreate = new Rol();
+        rolToCreate.setNombreCompleto(rol.getNombre());
+        rolToCreate.setDescripcion(rol.getDescripcion());
+        return rolRepository.save(rolToCreate);
     }
 
     @Override
-    public Rol upddateRol(Integer id, Rol rol) {
+    public Rol updateRol(Integer id, RolRequest rol) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'upddateRol'");
     }
 
     @Override
     public void deleteById(Integer id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteById'");
+        rolRepository.deleteById(id);
     }
-
-    
 }
