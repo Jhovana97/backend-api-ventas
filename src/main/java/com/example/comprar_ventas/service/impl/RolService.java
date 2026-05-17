@@ -28,7 +28,7 @@ public class RolService implements IRolService {
 
     @Override
     public Rol findRolByNombre(String nombre) {
-        return rolRepository.findByNombre(nombre).get();
+        return rolRepository.findByNombreCompleto(nombre).get();
     }
 
     @Override

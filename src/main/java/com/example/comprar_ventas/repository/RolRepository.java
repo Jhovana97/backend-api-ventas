@@ -13,13 +13,13 @@ import com.example.comprar_ventas.entity.Rol;
 public interface RolRepository extends ListCrudRepository<Rol, Integer> {
     //aqui se define las operaciones con base de datos para la entidad Rol, como guardar, actualizar, eliminar y buscar roles.
     //query methods
-    Optional<Rol> findByNombre(String nombre); //select * from rol where nombre = ?nombre
+    Optional<Rol> findByNombreCompleto(String nombre); //select * from rol where nombre = ?nombre
 
     //sql nativo 
     @Query (value = "select * from rol where nombre like '?1'", nativeQuery = true)
     Optional<Rol> findByNombreNative(String nombre);    
 
     //JPQL 
-    @Query (value = "select Rol from Rol  where nombre like '?1'")
-    Optional<Rol> findByNombreNativeJpql(String nombre);
+//     @Query (value = "select Rol from Rol  where nombreCompleto like '?1'")
+//     Optional<Rol> findByNombreNativeJpql(String nombre);
 }
